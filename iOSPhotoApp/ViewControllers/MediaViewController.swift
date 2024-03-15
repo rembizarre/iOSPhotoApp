@@ -12,8 +12,17 @@ final class MediaViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = .blue
+        view.backgroundColor = .systemBackground
+        configureNavigationBar()
     }
 
+    private func configureNavigationBar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIColor.systemBackground
+        appearance.shadowColor = .label
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "Медиатека"
+    }
 }
