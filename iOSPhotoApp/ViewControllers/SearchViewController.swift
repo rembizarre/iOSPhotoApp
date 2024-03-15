@@ -1,19 +1,19 @@
 //
-//  MainViewController.swift
+//  SearchViewController.swift
 //  iOSPhotoApp
 //
 //  Created by Rustem on 15.03.2024.
 //
 
 import UIKit
+import SnapKit
 
-class MainViewController: UIViewController {
+final class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+
+        view.backgroundColor = .yellow
     }
 
-
 }
-
