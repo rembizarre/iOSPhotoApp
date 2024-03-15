@@ -17,6 +17,8 @@
 		8A059D652BA43C3B00218ABC /* ForYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A059D642BA43C3B00218ABC /* ForYouViewController.swift */; };
 		8A059D672BA43C5300218ABC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A059D662BA43C5300218ABC /* SearchViewController.swift */; };
 		8A059D692BA4491B00218ABC /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A059D682BA4491B00218ABC /* Models.swift */; };
+		8A059D6B2BA4690C00218ABC /* SectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A059D6A2BA4690C00218ABC /* SectionCollectionViewCell.swift */; };
+		8A059D6D2BA47D0200218ABC /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A059D6C2BA47D0200218ABC /* MockData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		8A059D642BA43C3B00218ABC /* ForYouViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForYouViewController.swift; sourceTree = "<group>"; };
 		8A059D662BA43C5300218ABC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8A059D682BA4491B00218ABC /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		8A059D6A2BA4690C00218ABC /* SectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCollectionViewCell.swift; sourceTree = "<group>"; };
+		8A059D6C2BA47D0200218ABC /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				8A059D682BA4491B00218ABC /* Models.swift */,
+				8A059D6C2BA47D0200218ABC /* MockData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -98,6 +103,7 @@
 		8A059D5B2BA438B300218ABC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8A059D6A2BA4690C00218ABC /* SectionCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -192,7 +198,9 @@
 				8A059D652BA43C3B00218ABC /* ForYouViewController.swift in Sources */,
 				8A059D4A2BA437F100218ABC /* AlbumViewController.swift in Sources */,
 				8A059D462BA437F100218ABC /* AppDelegate.swift in Sources */,
+				8A059D6B2BA4690C00218ABC /* SectionCollectionViewCell.swift in Sources */,
 				8A059D482BA437F100218ABC /* SceneDelegate.swift in Sources */,
+				8A059D6D2BA47D0200218ABC /* MockData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
