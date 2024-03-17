@@ -22,7 +22,7 @@ final class AlbumViewController: UIViewController {
     private func configureNavigationBar() {
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = UIColor.systemBackground
-        appearance.shadowColor = .label
+        appearance.shadowColor = .clear
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -51,7 +51,7 @@ final class AlbumViewController: UIViewController {
                     let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
                     item.contentInsets = .init(top: 2, leading: 0, bottom: 10, trailing: 4)
 
-                    let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1 / 2 * 0.93), heightDimension: .fractionalHeight(0.8)), subitem: item, count: 2)
+                    let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(0.93 / 2), heightDimension: .estimated(450)), subitem: item, count: 2)
 
                     let section = NSCollectionLayoutSection(group: group)
                     section.orthogonalScrollingBehavior = .groupPaging
@@ -61,15 +61,15 @@ final class AlbumViewController: UIViewController {
                     return section
 
                 case 1:
-                    let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(0.5)))
-                    item.contentInsets = .init(top: 2, leading: 0, bottom: 10, trailing: 4)
+                    let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1 / 2), heightDimension: .fractionalHeight(1 / 2)))
+                    item.contentInsets = .init(top: 2, leading: 0, bottom: 10, trailing: 10)
 
-                    let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.8)), subitem: item, count: 2)
+                    let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(450)), subitems: [item])
 
                     let section = NSCollectionLayoutSection(group: group)
                     section.orthogonalScrollingBehavior = .none
                     section.interGroupSpacing = 5
-                    section.contentInsets = .init(top: 0, leading: 10, bottom: 0, trailing: 0)
+                    section.contentInsets = .init(top: 0, leading: 10, bottom: 0, trailing: 10)
 
                     return section
 

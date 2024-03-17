@@ -65,7 +65,6 @@ class SectionCollectionViewCell: UICollectionViewCell {
         stackView.addArrangedSubview(imageView)
         stackView.addArrangedSubview(tittle)
         stackView.addArrangedSubview(subTittle)
-
     }
     private func setupLayout() {
         stackView.snp.makeConstraints { make in
@@ -76,6 +75,7 @@ class SectionCollectionViewCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
-        self.imageView.image = nil
+        super.prepareForReuse()
+        imageView.image = nil
     }
 }
