@@ -34,6 +34,7 @@ final class AlbumViewController: UIViewController {
     // MARK: - UI
     private lazy var albums: [SectionItem] = []
     private lazy var peopleAndPlaces: [SectionItem] = []
+    private lazy var mediaTypes: [MediaFileTypeItem] = []
     private lazy var collectionView: UICollectionView = {
         let layout = createLayout()
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
@@ -41,6 +42,7 @@ final class AlbumViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(SectionCollectionViewCell.self, forCellWithReuseIdentifier: SectionCollectionViewCell.identifier)
+        collectionView.register(ListCollectionViewCell.self, forCellWithReuseIdentifier: ListCollectionViewCell.identifier)
         return collectionView
     }()
 
@@ -49,42 +51,55 @@ final class AlbumViewController: UIViewController {
             switch sectionIndex {
                 case 0:
                     let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-                    item.contentInsets = .init(top: 2, leading: 0, bottom: 10, trailing: 4)
+                    item.contentInsets = .init(top: 0, leading: 2, bottom: 10, trailing: 5)
 
-                    let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(0.93 / 2), heightDimension: .estimated(450)), subitem: item, count: 2)
-
+                    let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(0.9 / 2), heightDimension: .fractionalWidth(1.2)), subitem: item, count: 2)
+                    group.interItemSpacing = .fixed(15)
                     let section = NSCollectionLayoutSection(group: group)
-                    section.orthogonalScrollingBehavior = .groupPaging
+                    section.orthogonalScrollingBehavior = .paging
                     section.interGroupSpacing = 5
-                    section.contentInsets = .init(top: 0, leading: 10, bottom: 0, trailing: 0)
+                    section.contentInsets = .init(top: 0, leading: 15, bottom: 0, trailing: 0)
 
                     return section
 
                 case 1:
                     let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1 / 2), heightDimension: .fractionalHeight(1 / 2)))
-                    item.contentInsets = .init(top: 2, leading: 0, bottom: 10, trailing: 10)
+                    item.contentInsets = .init(top: 2, leading: 2, bottom: 10, trailing: 10)
 
                     let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(450)), subitems: [item])
 
                     let section = NSCollectionLayoutSection(group: group)
                     section.orthogonalScrollingBehavior = .none
                     section.interGroupSpacing = 5
-                    section.contentInsets = .init(top: 0, leading: 10, bottom: 0, trailing: 10)
+                    section.contentInsets = .init(top: 0, leading: 15, bottom: 0, trailing: 10)
 
                     return section
 
-                default:
-                    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(0.5))
+                case 2:
+                    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
                     let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
-                    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(400))
+                    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(44))
+                    let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+                    group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+
+                    let section = NSCollectionLayoutSection(group: group)
+                    section.interGroupSpacing = 10
+                    section.contentInsets = .init(top: 0, leading: 8, bottom: 0, trailing: 10)
+                    return section
+
+                default:
+                    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+                    let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+                    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1))
                     let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
                     group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0)
 
                     let section = NSCollectionLayoutSection(group: group)
                     section.interGroupSpacing = 10
                     section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
-                    section.orthogonalScrollingBehavior = .groupPagingCentered
+//                    section.orthogonal ScrollingBehavior = .groupPagingCentered
                     return section
             }
         }
@@ -93,6 +108,7 @@ final class AlbumViewController: UIViewController {
     private func loadItems() {
         albums = MockData.shared.albums
         peopleAndPlaces = MockData.shared.peopleAndPlaces
+        mediaTypes = MockData.shared.mediaTypes
         collectionView.reloadData()
     }
 
@@ -112,7 +128,7 @@ final class AlbumViewController: UIViewController {
 
 extension AlbumViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return [albums, peopleAndPlaces, mediaTypes].count
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -121,22 +137,51 @@ extension AlbumViewController: UICollectionViewDataSource, UICollectionViewDeleg
                 return albums.count
             case 1:
                 return peopleAndPlaces.count
+            case 2:
+                return mediaTypes.count
             default:
                 return 0
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SectionCollectionViewCell.identifier, for: indexPath) as? SectionCollectionViewCell else {
-            fatalError("No Cell to deque")
+        switch indexPath.section {
+            case 0:
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SectionCollectionViewCell.identifier, for: indexPath) as? SectionCollectionViewCell else {
+                    fatalError("no cell")
+                }
+                let albumItem = albums[indexPath.item]
+                cell.configure(with: albumItem)
+                return cell
+
+            case 1:
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SectionCollectionViewCell.identifier, for: indexPath) as? SectionCollectionViewCell else {
+                    fatalError("no cell to deque")
+                }
+                let peopleAndPlaces = peopleAndPlaces[indexPath.item]
+                cell.configure(with: peopleAndPlaces)
+                return cell
+                
+            case 2:
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListCollectionViewCell.identifier, for: indexPath) as? ListCollectionViewCell else {
+                    fatalError("no list cell")
+                }
+                let mediaTypes = mediaTypes[indexPath.item]
+                cell.configure(with: mediaTypes)
+                return cell
+
+            default:
+                fatalError("Default")
         }
-        let item = indexPath.section == 0 ? albums[indexPath.item] : peopleAndPlaces[indexPath.item]
-        cell.configure(with: item)
-        return cell
     }
 
     //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     //        <#code#>
     //    }
 
+}
+
+import SwiftUI
+#Preview {
+    TabBarViewController(nibName: "", bundle: .main)
 }

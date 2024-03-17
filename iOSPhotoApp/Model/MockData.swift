@@ -25,5 +25,14 @@ let albums: [SectionItem] = [
         SectionItem(title: "Люди", subTitle: "5", image: UIImage(named: "people")!),
         SectionItem(title: "Места", subTitle: "90", image: UIImage(named: "places")!)
     ]
-
+    
+    let mediaTypes: [MediaFileTypeItem] = [
+        MediaFileTypeItem(tittle: "Видео", subtittle: "5", image: UIImage(systemName: "video")!, accessoryImage: UIImage(systemName: "chevron.compact.right")!),
+        MediaFileTypeItem(tittle: "Селфи", subtittle: "15", image: UIImage(systemName: "person.crop.square")!, accessoryImage: UIImage(systemName: "chevron.compact.right")!),
+        MediaFileTypeItem(tittle: "Фото Live Photo", subtittle: "10", image: UIImage(systemName: "livephoto")!, accessoryImage: UIImage(systemName: "chevron.compact.right")!),
+        MediaFileTypeItem(tittle: "Портреты", subtittle: "3", image: UIImage(systemName: "f.cursive.circle")!, accessoryImage: UIImage(systemName: "chevron.compact.right")!),
+        MediaFileTypeItem(tittle: "Панорамы", subtittle: "7", image: UIImage(systemName: "pano")!, accessoryImage: UIImage(systemName: "chevron.compact.right")!),
+        MediaFileTypeItem(tittle: "Таймлапс", subtittle: "2", image: UIImage(systemName: "timelapse")!, accessoryImage: UIImage(systemName: "chevron.compact.right")!),
+        MediaFileTypeItem(tittle: "Замедлено", subtittle: "1", image: UIImage(systemName: "slowmo")!, accessoryImage: UIImage(systemName: "chevron.compact.right")!),
+    ]
 }

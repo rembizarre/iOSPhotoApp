@@ -12,27 +12,27 @@ class SectionCollectionViewCell: UICollectionViewCell {
     static let identifier = "SectionCollectionViewCell"
 
     // MARK: - UI
-    private let imageView: UIImageView = {
+    private lazy var imageView: UIImageView = {
         let image = UIImageView()
         image.layer.cornerRadius = 5
         image.clipsToBounds = true
         image.contentMode = .scaleAspectFill
         return image
     }()
-    private let tittle: UILabel = {
+    private lazy var tittle: UILabel = {
         let tittle = UILabel()
         tittle.font = UIFont.preferredFont(forTextStyle: .title3)
         tittle.textColor = .label
         return tittle
     }()
 
-    private let subTittle: UILabel = {
+    private lazy var subTittle: UILabel = {
         let tittle = UILabel()
         tittle.font = UIFont.preferredFont(forTextStyle: .title2)
         tittle.textColor = .secondaryLabel
         return tittle
     }()
-    private let stackView: UIStackView = {
+    private lazy var stackView: UIStackView = {
         let stack  = UIStackView()
         stack.axis = .vertical
         stack.alignment = .leading
