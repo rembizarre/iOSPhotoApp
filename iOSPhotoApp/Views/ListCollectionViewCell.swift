@@ -72,7 +72,7 @@ class ListCollectionViewCell: UICollectionViewCell {
     // MARK: - Setup Layout
     private func setupLayout() {
         imageView.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(10)
+            make.leading.equalToSuperview()
             make.centerY.equalToSuperview()
             make.width.height.equalTo(30)
         }

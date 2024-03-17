@@ -41,6 +41,7 @@ final class AlbumViewController: UIViewController {
         collectionView.backgroundColor = .systemBackground
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.identifier)
         collectionView.register(SectionCollectionViewCell.self, forCellWithReuseIdentifier: SectionCollectionViewCell.identifier)
         collectionView.register(ListCollectionViewCell.self, forCellWithReuseIdentifier: ListCollectionViewCell.identifier)
         return collectionView
@@ -48,6 +49,7 @@ final class AlbumViewController: UIViewController {
 
     private func createLayout() -> UICollectionViewCompositionalLayout {
         return UICollectionViewCompositionalLayout { sectionIndex, _ in
+            let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(0.9), heightDimension: .estimated(80)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
             switch sectionIndex {
                 case 0:
                     let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
@@ -58,20 +60,22 @@ final class AlbumViewController: UIViewController {
                     let section = NSCollectionLayoutSection(group: group)
                     section.orthogonalScrollingBehavior = .paging
                     section.interGroupSpacing = 5
-                    section.contentInsets = .init(top: 0, leading: 15, bottom: 0, trailing: 0)
+                    section.contentInsets = .init(top: 5, leading: 15, bottom: 30, trailing: 0)
+                    section.boundarySupplementaryItems = [layoutSectionHeader]
 
                     return section
 
                 case 1:
                     let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1 / 2), heightDimension: .fractionalHeight(1 / 2)))
-                    item.contentInsets = .init(top: 2, leading: 2, bottom: 10, trailing: 10)
+                    item.contentInsets = .init(top: 10, leading: 2, bottom: 10, trailing: 10)
 
-                    let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(450)), subitems: [item])
+                    let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(460)), subitems: [item])
 
                     let section = NSCollectionLayoutSection(group: group)
                     section.orthogonalScrollingBehavior = .none
                     section.interGroupSpacing = 5
-                    section.contentInsets = .init(top: 0, leading: 15, bottom: 0, trailing: 10)
+                    section.contentInsets = .init(top: 0, leading: 15, bottom: 25, trailing: 10)
+                    section.boundarySupplementaryItems = [layoutSectionHeader]
 
                     return section
 
@@ -84,8 +88,9 @@ final class AlbumViewController: UIViewController {
                     group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
 
                     let section = NSCollectionLayoutSection(group: group)
-                    section.interGroupSpacing = 10
-                    section.contentInsets = .init(top: 0, leading: 8, bottom: 0, trailing: 10)
+//                    section.interGroupSpacing = 10
+                    section.contentInsets = .init(top: 0, leading: 15, bottom: 0, trailing: 0)
+                    section.boundarySupplementaryItems = [layoutSectionHeader]
                     return section
 
                 default:
@@ -99,7 +104,6 @@ final class AlbumViewController: UIViewController {
                     let section = NSCollectionLayoutSection(group: group)
                     section.interGroupSpacing = 10
                     section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
-//                    section.orthogonal ScrollingBehavior = .groupPagingCentered
                     return section
             }
         }
@@ -143,7 +147,33 @@ extension AlbumViewController: UICollectionViewDataSource, UICollectionViewDeleg
                 return 0
         }
     }
-
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch indexPath.section {
+            case 0:
+                guard kind == UICollectionView.elementKindSectionHeader else {
+                    return UICollectionReusableView()
+                }
+                let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.identifier, for: indexPath) as! SectionHeader
+                header.title.text = "Мои альбомы"
+                return header
+            case 1:
+                guard kind == UICollectionView.elementKindSectionHeader else {
+                    return UICollectionReusableView()
+                }
+                let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.identifier, for: indexPath) as! SectionHeader
+                header.title.text = "Люди и места"
+                return header
+            case 2:
+                guard kind == UICollectionView.elementKindSectionHeader else {
+                    return UICollectionReusableView()
+                }
+                let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.identifier, for: indexPath) as! SectionHeader
+                header.title.text = "Типы медиафайлов"
+                return header
+            default:
+                fatalError()
+        }
+    }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
             case 0:
