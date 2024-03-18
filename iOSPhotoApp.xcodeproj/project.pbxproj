@@ -21,6 +21,7 @@
 		8A059D6D2BA47D0200218ABC /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A059D6C2BA47D0200218ABC /* MockData.swift */; };
 		8A41711C2BA737D6008D74D3 /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A41711B2BA737D6008D74D3 /* ListCollectionViewCell.swift */; };
 		8A41711E2BA773CF008D74D3 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A41711D2BA773CF008D74D3 /* SectionHeader.swift */; };
+		8A4171202BA881C0008D74D3 /* AlbumViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A41711F2BA881C0008D74D3 /* AlbumViewController+CollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		8A059D6C2BA47D0200218ABC /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		8A41711B2BA737D6008D74D3 /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
 		8A41711D2BA773CF008D74D3 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		8A41711F2BA881C0008D74D3 /* AlbumViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlbumViewController+CollectionView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				8A059D6A2BA4690C00218ABC /* SectionCollectionViewCell.swift */,
 				8A41711B2BA737D6008D74D3 /* ListCollectionViewCell.swift */,
 				8A41711D2BA773CF008D74D3 /* SectionHeader.swift */,
+				8A41711F2BA881C0008D74D3 /* AlbumViewController+CollectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				8A059D652BA43C3B00218ABC /* ForYouViewController.swift in Sources */,
 				8A059D4A2BA437F100218ABC /* AlbumViewController.swift in Sources */,
 				8A059D462BA437F100218ABC /* AppDelegate.swift in Sources */,
+				8A4171202BA881C0008D74D3 /* AlbumViewController+CollectionView.swift in Sources */,
 				8A41711E2BA773CF008D74D3 /* SectionHeader.swift in Sources */,
 				8A059D6B2BA4690C00218ABC /* SectionCollectionViewCell.swift in Sources */,
 				8A059D482BA437F100218ABC /* SceneDelegate.swift in Sources */,

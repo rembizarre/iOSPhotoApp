@@ -10,7 +10,8 @@ import UIKit
  class SectionHeader: UICollectionReusableView {
     static let identifier = "SectionHeader"
 
-     lazy var title: UILabel = {
+     // MARK: - UI
+    lazy var title: UILabel = {
         let label = UILabel()
         label.textColor = .label
         label.font = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 22, weight: .bold))
@@ -22,6 +23,14 @@ import UIKit
          separator.backgroundColor = .quaternaryLabel
         return separator
     }()
+
+     lazy var headerButton: UIButton = {
+         let button = UIButton()
+         button.setTitle("Все", for: .normal)
+         button.setTitleColor(UIColor.systemBlue, for: .normal)
+         button.isHidden = true
+         return button
+     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,6 +46,7 @@ import UIKit
     private func setupHierarchy () {
         self.addSubview(separator)
         self.addSubview(title)
+        self.addSubview(headerButton)
 
     }
     //MARK: SetupHierarchy
@@ -44,7 +54,6 @@ import UIKit
         separator.snp.makeConstraints { make in
             make.height.equalTo(1)
             make.leading.equalToSuperview().offset(-15)
-//            make.width.equalToSuperview()
             make.trailing.equalToSuperview().offset(25)
             make.top.equalToSuperview()
         }
@@ -52,7 +61,11 @@ import UIKit
             make.top.equalTo(separator.snp.bottom).offset(10)
             make.leading.equalTo(separator.snp.leading)
             make.bottom.equalToSuperview()
-
+        }
+        headerButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-15)
+            make.width.height.equalTo(40)
+            make.top.equalTo(separator.snp.bottom).offset(5)
         }
     }
 }

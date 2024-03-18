@@ -13,9 +13,16 @@ struct SectionItem {
     let image: UIImage
 }
 
+enum subtitleType {
+    case text(String)
+    case iconImage(UIImage)
+}
+
 struct MediaFileTypeItem {
     let tittle: String
-    let subtittle: String
     let image: UIImage
+    let type: subtitleType
     let accessoryImage: UIImage
 }
+
+

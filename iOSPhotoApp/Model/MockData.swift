@@ -27,12 +27,23 @@ let albums: [SectionItem] = [
     ]
     
     let mediaTypes: [MediaFileTypeItem] = [
-        MediaFileTypeItem(tittle: "Видео", subtittle: "5", image: UIImage(systemName: "video")!, accessoryImage: UIImage(systemName: "chevron.compact.right")!),
-        MediaFileTypeItem(tittle: "Селфи", subtittle: "15", image: UIImage(systemName: "person.crop.square")!, accessoryImage: UIImage(systemName: "chevron.compact.right")!),
-        MediaFileTypeItem(tittle: "Фото Live Photo", subtittle: "10", image: UIImage(systemName: "livephoto")!, accessoryImage: UIImage(systemName: "chevron.compact.right")!),
-        MediaFileTypeItem(tittle: "Портреты", subtittle: "3", image: UIImage(systemName: "f.cursive.circle")!, accessoryImage: UIImage(systemName: "chevron.compact.right")!),
-        MediaFileTypeItem(tittle: "Панорамы", subtittle: "7", image: UIImage(systemName: "pano")!, accessoryImage: UIImage(systemName: "chevron.compact.right")!),
-        MediaFileTypeItem(tittle: "Таймлапс", subtittle: "2", image: UIImage(systemName: "timelapse")!, accessoryImage: UIImage(systemName: "chevron.compact.right")!),
-        MediaFileTypeItem(tittle: "Замедлено", subtittle: "1", image: UIImage(systemName: "slowmo")!, accessoryImage: UIImage(systemName: "chevron.compact.right")!),
+        MediaFileTypeItem(tittle: "Видео", image: UIImage(systemName: "video")!, type: subtitleType.text("5"), accessoryImage: UIImage(systemName: "chevron.compact.right")!),
+        MediaFileTypeItem(tittle: "Селфи", image: UIImage(systemName: "person.crop.square")!, type: subtitleType.text("15"), accessoryImage: UIImage(systemName: "chevron.compact.right")!),
+        MediaFileTypeItem(tittle: "Фото Live Photo", image: UIImage(systemName: "livephoto")!, type: subtitleType.text("10"), accessoryImage: UIImage(systemName: "chevron.compact.right")!),
+        MediaFileTypeItem(tittle: "Портреты", image: UIImage(systemName: "f.cursive.circle")!, type: subtitleType.text("3"),  accessoryImage: UIImage(systemName: "chevron.compact.right")!),
+        MediaFileTypeItem(tittle: "Панорамы", image: UIImage(systemName: "pano")!, type: subtitleType.text("7"), accessoryImage: UIImage(systemName: "chevron.compact.right")!),
+        MediaFileTypeItem(tittle: "Таймлапс", image: UIImage(systemName: "timelapse")!, type: subtitleType.text("2"), accessoryImage: UIImage(systemName: "chevron.compact.right")!),
+        MediaFileTypeItem(tittle: "Замедлено", image: UIImage(systemName: "slowmo")!, type: subtitleType.text("1"), accessoryImage: UIImage(systemName: "chevron.compact.right")!),
+        MediaFileTypeItem(tittle: "Киноэффект", image: UIImage(systemName: "arrow.up.right.video")!, type: subtitleType.text("18"),  accessoryImage: UIImage(systemName: "chevron.compact.right")!),
+        MediaFileTypeItem(tittle: "Снимки экрана", image: UIImage(systemName: "camera.viewfinder")!, type: subtitleType.text("65"),  accessoryImage: UIImage(systemName: "chevron.compact.right")!),
+        MediaFileTypeItem(tittle: "Записи экрана", image: UIImage(systemName: "record.circle")!, type: subtitleType.text("21"), accessoryImage: UIImage(systemName: "chevron.compact.right")!),
+        MediaFileTypeItem(tittle: "Анимированные", image: UIImage(systemName: "square.stack.3d.forward.dottedline")!, type: subtitleType.text("17"), accessoryImage: UIImage(systemName: "chevron.compact.right")!),
+        MediaFileTypeItem(tittle: "RAW", image: UIImage(systemName: "r.square.on.square")!, type: subtitleType.text("5"), accessoryImage: UIImage(systemName: "chevron.compact.right")!),
     ]
+
+    let utilities: [MediaFileTypeItem] = [
+        MediaFileTypeItem(tittle: "Импортированные", image: UIImage(systemName: "square.and.arrow.down")!, type: subtitleType.text("10"), accessoryImage: UIImage(systemName: "chevron.compact.right")!),
+        MediaFileTypeItem(tittle: "Скрытые", image: UIImage(systemName: "eye.slash")!, type: subtitleType.iconImage(UIImage(systemName: "lock.fill")!), accessoryImage: UIImage(systemName: "chevron.compact.right")!),
+        MediaFileTypeItem(tittle: "Недавно удаленные", image: UIImage(systemName: "trash")!, type: subtitleType.iconImage(UIImage(systemName: "lock.fill")!), accessoryImage: UIImage(systemName: "chevron.compact.right")!)
+        ]
 }

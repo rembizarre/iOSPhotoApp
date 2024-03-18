@@ -32,10 +32,11 @@ final class AlbumViewController: UIViewController {
 
 
     // MARK: - UI
-    private lazy var albums: [SectionItem] = []
-    private lazy var peopleAndPlaces: [SectionItem] = []
-    private lazy var mediaTypes: [MediaFileTypeItem] = []
-    private lazy var collectionView: UICollectionView = {
+    lazy var albums: [SectionItem] = []
+    lazy var peopleAndPlaces: [SectionItem] = []
+    lazy var mediaTypes: [MediaFileTypeItem] = []
+    lazy var utilities: [MediaFileTypeItem] = []
+    lazy var collectionView: UICollectionView = {
         let layout = createLayout()
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.backgroundColor = .systemBackground
@@ -88,23 +89,24 @@ final class AlbumViewController: UIViewController {
                     group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
 
                     let section = NSCollectionLayoutSection(group: group)
-//                    section.interGroupSpacing = 10
-                    section.contentInsets = .init(top: 0, leading: 15, bottom: 0, trailing: 0)
+                    section.contentInsets = .init(top: 0, leading: 15, bottom: 25, trailing: 0)
                     section.boundarySupplementaryItems = [layoutSectionHeader]
                     return section
 
-                default:
+                case 3:
                     let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
                     let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
-                    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1))
-                    let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-                    group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0)
+                    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(44))
+                    let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+                    group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
 
                     let section = NSCollectionLayoutSection(group: group)
-                    section.interGroupSpacing = 10
-                    section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+                    section.contentInsets = .init(top: 0, leading: 15, bottom: 0, trailing: 0)
+                    section.boundarySupplementaryItems = [layoutSectionHeader]
                     return section
+                default:
+                    fatalError()
             }
         }
     }
@@ -113,6 +115,7 @@ final class AlbumViewController: UIViewController {
         albums = MockData.shared.albums
         peopleAndPlaces = MockData.shared.peopleAndPlaces
         mediaTypes = MockData.shared.mediaTypes
+        utilities = MockData.shared.utilities
         collectionView.reloadData()
     }
 
@@ -128,90 +131,4 @@ final class AlbumViewController: UIViewController {
 
         }
     }
-}
-
-extension AlbumViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return [albums, peopleAndPlaces, mediaTypes].count
-    }
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section {
-            case 0:
-                return albums.count
-            case 1:
-                return peopleAndPlaces.count
-            case 2:
-                return mediaTypes.count
-            default:
-                return 0
-        }
-    }
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        switch indexPath.section {
-            case 0:
-                guard kind == UICollectionView.elementKindSectionHeader else {
-                    return UICollectionReusableView()
-                }
-                let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.identifier, for: indexPath) as! SectionHeader
-                header.title.text = "Мои альбомы"
-                return header
-            case 1:
-                guard kind == UICollectionView.elementKindSectionHeader else {
-                    return UICollectionReusableView()
-                }
-                let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.identifier, for: indexPath) as! SectionHeader
-                header.title.text = "Люди и места"
-                return header
-            case 2:
-                guard kind == UICollectionView.elementKindSectionHeader else {
-                    return UICollectionReusableView()
-                }
-                let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeader.identifier, for: indexPath) as! SectionHeader
-                header.title.text = "Типы медиафайлов"
-                return header
-            default:
-                fatalError()
-        }
-    }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch indexPath.section {
-            case 0:
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SectionCollectionViewCell.identifier, for: indexPath) as? SectionCollectionViewCell else {
-                    fatalError("no cell")
-                }
-                let albumItem = albums[indexPath.item]
-                cell.configure(with: albumItem)
-                return cell
-
-            case 1:
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SectionCollectionViewCell.identifier, for: indexPath) as? SectionCollectionViewCell else {
-                    fatalError("no cell to deque")
-                }
-                let peopleAndPlaces = peopleAndPlaces[indexPath.item]
-                cell.configure(with: peopleAndPlaces)
-                return cell
-                
-            case 2:
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListCollectionViewCell.identifier, for: indexPath) as? ListCollectionViewCell else {
-                    fatalError("no list cell")
-                }
-                let mediaTypes = mediaTypes[indexPath.item]
-                cell.configure(with: mediaTypes)
-                return cell
-
-            default:
-                fatalError("Default")
-        }
-    }
-
-    //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    //        <#code#>
-    //    }
-
-}
-
-import SwiftUI
-#Preview {
-    TabBarViewController(nibName: "", bundle: .main)
 }

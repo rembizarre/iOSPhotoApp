@@ -10,13 +10,13 @@ import SnapKit
 
 class ListCollectionViewCell: UICollectionViewCell {
     static var identifier = "ListCollectionViewCell"
-    
+
     private lazy var imageView: UIImageView = {
         let image = UIImageView()
         image.backgroundColor = .clear
         return image
     }()
-    
+
     private lazy var title: UILabel = {
         let tittle = UILabel()
         tittle.font = UIFont.preferredFont(forTextStyle: .title2)
@@ -27,6 +27,7 @@ class ListCollectionViewCell: UICollectionViewCell {
         let tittle = UILabel()
         tittle.font = UIFont.preferredFont(forTextStyle: .title3)
         tittle.textColor = .secondaryLabel
+        tittle.isHidden = true
         return tittle
     }()
     private lazy var separator: UIView = {
@@ -36,10 +37,17 @@ class ListCollectionViewCell: UICollectionViewCell {
     }()
     private lazy var accessoryItem: UIImageView = {
         let accessory = UIImageView()
-        accessory.tintColor = UIColor.lightGray.withAlphaComponent(0.5)
+        accessory.tintColor = .quaternaryLabel
         return accessory
     }()
-    
+
+    private lazy var addOnImage: UIImageView = {
+        let image = UIImageView()
+        image.isHidden = true
+        image.tintColor = .secondaryLabel
+        return image
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupHierarchy()
@@ -47,23 +55,39 @@ class ListCollectionViewCell: UICollectionViewCell {
         selectedBackgroundView = UIView()
         selectedBackgroundView?.backgroundColor = UIColor.secondaryLabel
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("No storybaord, please")
     }
     
-    public func configure(with item: MediaFileTypeItem) {
+    public func setSeparatorHidden(_ hidden: Bool) {
+        separator.isHidden = hidden
+    }
+
+    public func configure(with item: MediaFileTypeItem, isLastItem: Bool) {
+        switch item.type {
+            case .text(let string):
+                subTittle.text = string
+                subTittle.isHidden = false
+                addOnImage.isHidden = true
+            case .iconImage(let image):
+                addOnImage.image = image
+                addOnImage.isHidden = false
+                subTittle.isHidden = true
+        }
         imageView.image = item.image
         title.text = item.tittle
-        subTittle.text = item.subtittle
         accessoryItem.image = item.accessoryImage
+        self.setSeparatorHidden(isLastItem)
     }
-    
+
+
     // MARK: - setupHierarchy
     private func setupHierarchy() {
         contentView.addSubview(imageView)
         contentView.addSubview(title)
         contentView.addSubview(subTittle)
+        contentView.addSubview(addOnImage)
         contentView.addSubview(separator)
         contentView.addSubview(accessoryItem)
     }
@@ -74,7 +98,7 @@ class ListCollectionViewCell: UICollectionViewCell {
         imageView.snp.makeConstraints { make in
             make.leading.equalToSuperview()
             make.centerY.equalToSuperview()
-            make.width.height.equalTo(30)
+            make.width.height.equalTo(25)
         }
         
         title.snp.makeConstraints { make in
@@ -100,6 +124,11 @@ class ListCollectionViewCell: UICollectionViewCell {
             make.leading.equalTo(title.snp.leading)
             make.top.equalTo(title.snp.bottom).offset(10)
             make.height.equalTo(0.5)
+        }
+
+        addOnImage.snp.makeConstraints { make in
+            make.trailing.equalTo(accessoryItem.snp.leading).offset(-5)
+            make.centerY.equalToSuperview()
         }
     }
 }

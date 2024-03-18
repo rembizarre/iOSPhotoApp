@@ -21,7 +21,7 @@ final class TabBarViewController: UITabBarController {
     }
 
     private func setupTabBarViewController() {
-        let first = AlbumViewController()
+        let first = MediaViewController ()
         let firstNavController = UINavigationController(rootViewController: first)
         let firstIcon = UITabBarItem(title: "Медиатека", image: UIImage(systemName: "photo.on.rectangle"), selectedImage: UIImage(systemName: "photo.fill.on.rectangle.fill"))
         first.tabBarItem = firstIcon
@@ -31,7 +31,7 @@ final class TabBarViewController: UITabBarController {
         let secondIcon = UITabBarItem(title: "Для Вас", image: UIImage(systemName: "heart.text.square"), selectedImage: UIImage(systemName: "heart.text.square.fill"))
         second.tabBarItem = secondIcon
 
-        let third = MediaViewController()
+        let third = AlbumViewController()
         let thirdNavController = UINavigationController(rootViewController: third)
         let thirdIcon = UITabBarItem(title: "Альбомы", image: UIImage(systemName: "rectangle.stack"), selectedImage: UIImage(systemName: "rectangle.stack.fill"))
         third.tabBarItem = thirdIcon
