@@ -45,5 +45,24 @@ let albums: [SectionItem] = [
         MediaFileTypeItem(tittle: "Импортированные", image: UIImage(systemName: "square.and.arrow.down")!, type: subtitleType.text("10"), accessoryImage: UIImage(systemName: "chevron.compact.right")!),
         MediaFileTypeItem(tittle: "Скрытые", image: UIImage(systemName: "eye.slash")!, type: subtitleType.iconImage(UIImage(systemName: "lock.fill")!), accessoryImage: UIImage(systemName: "chevron.compact.right")!),
         MediaFileTypeItem(tittle: "Недавно удаленные", image: UIImage(systemName: "trash")!, type: subtitleType.iconImage(UIImage(systemName: "lock.fill")!), accessoryImage: UIImage(systemName: "chevron.compact.right")!)
-        ]
+ 
+    ]
+}
+
+struct PhotoAssets {
+    static let mediaStore = [
+        "astana", "astana2", "astana3", "astana4", "astana5",
+        "insta", "insta2", "insta3", "insta4", "insta5", "insta6", "insta7",
+        "paris", "paris2", "paris3", "paris4", "paris5",
+        "place", "place2", "place3", "place5",
+        "restik", "restik3", "restik4", "restik5",
+        "sg", "sg2", "sg3", "sg4", "sg5", "sg6", "sg7", "sg8",
+        "wa", "wa2", "wa3", "wa4", "wa5",
+        "wp", "wp2", "wp3", "wp4", "wp5",
+    ]
+
+
+    static let forYouAlbum = ["astana", "astana2", "astana3", "astana4", "astana5"]
+    static let searchAlbum = ["astana", "astana2", "astana3", "astana4", "astana5"]
+
 }

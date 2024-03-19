@@ -132,7 +132,4 @@ class ListCollectionViewCell: UICollectionViewCell {
         }
     }
 }
-import SwiftUI
-#Preview {
-    TabBarViewController(nibName: "", bundle: .main)
-}
+
