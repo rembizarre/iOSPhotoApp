@@ -43,7 +43,7 @@ final class TabBarViewController: UITabBarController {
 
         let controllers = [firstNavController, secondNavController, thirdNavController, forthNavController]
         self.setViewControllers(controllers, animated: true)
-
+        self.selectedIndex = 2
     }
 
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {

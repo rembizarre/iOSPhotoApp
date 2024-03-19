@@ -25,4 +25,6 @@ struct MediaFileTypeItem {
     let accessoryImage: UIImage
 }
 
-
+enum Orientation {
+    case horizontal, vertical
+}

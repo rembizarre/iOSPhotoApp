@@ -62,7 +62,7 @@ struct PhotoAssets {
     ]
 
 
-    static let forYouAlbum = ["astana", "astana2", "astana3", "astana4", "astana5"]
+    static let forYouAlbum = ["astana", "paris", "restik3", "paris3"]
     static let searchAlbum = ["astana", "astana2", "astana3", "astana4", "astana5"]
 
 }

@@ -23,6 +23,8 @@
 		8A41711E2BA773CF008D74D3 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A41711D2BA773CF008D74D3 /* SectionHeader.swift */; };
 		8A4171202BA881C0008D74D3 /* AlbumViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A41711F2BA881C0008D74D3 /* AlbumViewController+CollectionView.swift */; };
 		8A4171222BA95F60008D74D3 /* BasicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4171212BA95F60008D74D3 /* BasicCollectionViewCell.swift */; };
+		8A4171242BA9A877008D74D3 /* ForYouViewController + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4171232BA9A877008D74D3 /* ForYouViewController + extension.swift */; };
+		8A4171262BA9B000008D74D3 /* ForYouCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4171252BA9B000008D74D3 /* ForYouCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		8A41711D2BA773CF008D74D3 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		8A41711F2BA881C0008D74D3 /* AlbumViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlbumViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		8A4171212BA95F60008D74D3 /* BasicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCollectionViewCell.swift; sourceTree = "<group>"; };
+		8A4171232BA9A877008D74D3 /* ForYouViewController + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ForYouViewController + extension.swift"; sourceTree = "<group>"; };
+		8A4171252BA9B000008D74D3 /* ForYouCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForYouCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,8 @@
 				8A41711D2BA773CF008D74D3 /* SectionHeader.swift */,
 				8A41711F2BA881C0008D74D3 /* AlbumViewController+CollectionView.swift */,
 				8A4171212BA95F60008D74D3 /* BasicCollectionViewCell.swift */,
+				8A4171232BA9A877008D74D3 /* ForYouViewController + extension.swift */,
+				8A4171252BA9B000008D74D3 /* ForYouCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -207,6 +213,7 @@
 				8A059D5E2BA43AD700218ABC /* TabBarViewController.swift in Sources */,
 				8A059D672BA43C5300218ABC /* SearchViewController.swift in Sources */,
 				8A059D602BA43BFD00218ABC /* MediaViewController.swift in Sources */,
+				8A4171262BA9B000008D74D3 /* ForYouCollectionViewCell.swift in Sources */,
 				8A059D692BA4491B00218ABC /* Models.swift in Sources */,
 				8A059D652BA43C3B00218ABC /* ForYouViewController.swift in Sources */,
 				8A059D4A2BA437F100218ABC /* AlbumViewController.swift in Sources */,
@@ -216,6 +223,7 @@
 				8A41711E2BA773CF008D74D3 /* SectionHeader.swift in Sources */,
 				8A059D6B2BA4690C00218ABC /* SectionCollectionViewCell.swift in Sources */,
 				8A059D482BA437F100218ABC /* SceneDelegate.swift in Sources */,
+				8A4171242BA9A877008D74D3 /* ForYouViewController + extension.swift in Sources */,
 				8A059D6D2BA47D0200218ABC /* MockData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -69,7 +69,7 @@ extension AlbumViewController: UICollectionViewDataSource, UICollectionViewDeleg
         }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.section == 2 { // Assuming section 2 uses ListCollectionViewCell
+        if indexPath.section == 2 { 
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListCollectionViewCell.identifier, for: indexPath) as? ListCollectionViewCell else {
                 fatalError("Could not dequeue ListCollectionViewCell")
             }
@@ -127,7 +127,7 @@ extension AlbumViewController: UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     @objc func didTapAllPhotoButton() {
-        print("didTapAllPhotoButton")
+        navigationController?.pushViewController(MediaViewController(), animated: true)
     }
 }
 

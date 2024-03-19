@@ -21,30 +21,44 @@ final class MediaViewController: UIViewController, UICollectionViewDataSource, U
         collectionView.dataSource = self
         return collectionView
     }()
-
+    var photoAssets = PhotoAssets.mediaStore
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         configureNavigationBar()
         setupHierarchy()
         setupLayout()
+        loadItems()
     }
 
     private func configureNavigationBar() {
         navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
-    
 
     //MARK: SetupHierarchy
     private func setupHierarchy () {
         view.addSubview(collectionView)
     }
+
     //MARK: SetupHierarchy
     private func setupLayout() {
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
+
+    private func loadItems() {
+        photoAssets = PhotoAssets.mediaStore
+        collectionView.reloadData()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         PhotoAssets.mediaStore.count
     }

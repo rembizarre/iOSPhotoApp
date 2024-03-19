@@ -18,7 +18,6 @@ final class AlbumViewController: UIViewController {
         setupLayout()
         loadItems()
     }
-
     private func configureNavigationBar() {
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = UIColor.systemBackground
@@ -26,16 +25,17 @@ final class AlbumViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.isHidden = false
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: nil, action: nil)
         title = "Альбомы"
     }
 
 
     // MARK: - UI
-    lazy var albums: [SectionItem] = []
-    lazy var peopleAndPlaces: [SectionItem] = []
-    lazy var mediaTypes: [MediaFileTypeItem] = []
-    lazy var utilities: [MediaFileTypeItem] = []
+    var albums: [SectionItem] = []
+    var peopleAndPlaces: [SectionItem] = []
+    var mediaTypes: [MediaFileTypeItem] = []
+    var utilities: [MediaFileTypeItem] = []
     lazy var collectionView: UICollectionView = {
         let layout = createLayout()
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
@@ -110,6 +110,10 @@ final class AlbumViewController: UIViewController {
             }
         }
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
 
     private func loadItems() {
         albums = MockData.shared.albums
@@ -119,6 +123,7 @@ final class AlbumViewController: UIViewController {
         collectionView.reloadData()
     }
 
+    // MARK: - setupHierarchy
     private func setupHierarchy () {
         view.addSubview(collectionView)
     }
